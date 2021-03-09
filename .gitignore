@@ -1,0 +1,7 @@
+node_modules
+public/bundle
+target
+coverage
+.nyc_output
+.env
+tmp
