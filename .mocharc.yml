@@ -1,9 +1,0 @@
-extension:
-  - .tsx
-  - .ts
-recursive: true
-spec:
-  - assets/tests/**/*
-require:
-  - jsdom-global/register
-  - ts-node/register
