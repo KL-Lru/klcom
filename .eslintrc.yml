@@ -1,13 +1,12 @@
 env:
   browser: true
-  es2020: true
+  es2021: true
 extends:
   - plugin:react/recommended
   - google
   - plugin:import/errors
   - plugin:import/warnings
   - plugin:import/typescript
-  - plugin:@typescript-eslint/eslint-recommended
   - plugin:@typescript-eslint/recommended
   - plugin:@typescript-eslint/recommended-requiring-type-checking
   - prettier
@@ -17,7 +16,7 @@ parser: '@typescript-eslint/parser'
 parserOptions:
   ecmaFeatures:
     jsx: true
-  ecmaVersion: 11
+  ecmaVersion: 12
   sourceType: module
   project: ./tsconfig.json
 plugins:
@@ -29,20 +28,6 @@ plugins:
   - prettier
 rules: 
   react/prop-types: off
-  "@typescript-eslint/explicit-module-boundary-types": "off"
-  prefer-arrow/prefer-arrow-functions:
-    - error
-    - disallowPrototype: true
-      singleReturnOnly: false
-      classPropertiesAllowed: false
-  '@typescript-eslint/no-unused-vars':
-    - error
-    - vars: all
-      args: after-used
-      argsIgnorePattern: _
-      ignoreRestSiblings: false
-      varsIgnorePattern: _
-  prettier/prettier: error
 settings:
   react: 
     version: detect
