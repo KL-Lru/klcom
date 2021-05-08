@@ -1,7 +1,15 @@
 import path from 'path';
-import webpack from 'webpack';
+import { Configuration as WebpackConfiguration } from "webpack";
+import { Configuration as WebpackDevServerConfiguration } from "webpack-dev-server";
+import { babelRule } from './assets/configs/babel.config';
+import { tsRule } from './assets/configs/ts.config';
+import { htmlRule, htmlPlugin } from './assets/configs/html.config';
 
-const config: webpack.Configuration = {
+interface Configuration extends WebpackConfiguration {
+  devServer?: WebpackDevServerConfiguration;
+}
+
+const config: Configuration = {
   entry: './assets/app.tsx',
   mode: 'development',
   devtool: 'source-map',
@@ -11,25 +19,9 @@ const config: webpack.Configuration = {
   },
   module: {
     rules: [
-      {
-        test: /\.js$/,
-        use: [
-          {
-            loader: 'babel-loader',
-            options: {
-              presets: [['@babel/preset-env', { modules: false }]],
-            },
-          },
-        ],
-      },
-      {
-        test: /\.tsx?$/,
-        use: [
-          {
-            loader: 'ts-loader',
-          },
-        ],
-      },
+      babelRule,
+      tsRule,
+      htmlRule
     ],
   },
   resolve: {
@@ -37,10 +29,13 @@ const config: webpack.Configuration = {
     modules: [path.resolve('./assets'), path.resolve('./node_modules')],
   },
   devServer: {
-    contentBase: path.join(__dirname, 'static'),
+    contentBase: path.join(__dirname, 'public'),
     watchContentBase: true,
     disableHostCheck: true,
   },
+  plugins: [
+    htmlPlugin
+  ]
 };
 
 export default config;

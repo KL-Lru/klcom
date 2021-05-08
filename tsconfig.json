@@ -1,20 +1,27 @@
 {
   "compilerOptions": {
     "lib": [
-      "es6", 
-      "dom"
+      "ES6", 
+      "DOM",
+      "DOM.Iterable",
+      "ESNext",
     ],
-    "target": "ESNEXT",                          /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', 'ES2018', 'ES2019', 'ES2020', or 'ESNEXT'. */
+    "target": "ES6",                          /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', 'ES2018', 'ES2019', 'ES2020', or 'ESNEXT'. */
     "module": "ESNext",                     /* Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', 'es2020', or 'ESNext'. */
-    "jsx": "react",                     /* Specify JSX code generation: 'preserve', 'react-native', or 'react'. */
+    "jsx": "react-jsx",                     /* Specify JSX code generation: 'preserve', 'react-native', or 'react'. */
     "declaration": true,                   /* Generates corresponding '.d.ts' file. */
     "declarationMap": true,                /* Generates a sourcemap for each corresponding '.d.ts' file. */
     "sourceMap": true,                     /* Generates corresponding '.map' file. */
+    "removeComments": true,
     "outDir": "./public/bundle",                        /* Redirect output structure to the directory. */
 
     /* Strict Type-Checking Options */
+    "alwaysStrict": true,
     "strict": true,                           /* Enable all strict type-checking options. */
     "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "strictPropertyInitialization": true,
 
     /* Additional Checks */
     "noUnusedLocals": true,                /* Report errors on unused locals. */
@@ -22,6 +29,7 @@
     "noImplicitReturns": true,             /* Report error when not all code paths in function return a value. */
     "noImplicitAny": true,
     "noImplicitThis": true,
+    "noUncheckedIndexedAccess": true,
     "noFallthroughCasesInSwitch": true,    /* Report errors for fallthrough cases in switch statement. */
 
     /* Module Resolution Options */
@@ -38,6 +46,7 @@
   }, 
   "include":[
     "assets/**/*",
+    "webpack.config.ts"
   ],
   "exclude":[
     "node_modules"
