@@ -1,3 +1,4 @@
+pub mod change_logs;
 pub mod post_tags;
 pub mod posts;
 pub mod tags;

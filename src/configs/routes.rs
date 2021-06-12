@@ -12,12 +12,24 @@ pub fn route_configure(cfg: &mut web::ServiceConfig) {
         ),
     )
     .service(
-      web::scope("posts").service(
-        web::resource("/")
-          .route(web::get().to(controllers::apis::posts::index))
-          .route(web::post().to(controllers::apis::posts::create))
-          .route(web::put().to(controllers::apis::posts::update)),
-      ),
+      web::scope("posts")
+        .service(
+          web::resource("")
+            .route(web::get().to(controllers::apis::posts::index))
+            .route(web::post().to(controllers::apis::posts::create)),
+        )
+        .service(web::resource("/{id}").route(web::put().to(controllers::apis::posts::update))),
+    )
+    .service(
+      web::scope("change_logs")
+        .service(
+          web::resource("")
+            .route(web::get().to(controllers::apis::change_logs::index))
+            .route(web::post().to(controllers::apis::change_logs::create)),
+        )
+        .service(
+          web::resource("/{id}").route(web::put().to(controllers::apis::change_logs::update)),
+        ),
     )
     .service(web::resource("/{filename}").route(web::get().to(controllers::files::public_file)));
 }

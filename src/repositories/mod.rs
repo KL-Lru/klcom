@@ -1,3 +1,4 @@
+pub mod change_logs;
 pub mod connection;
 pub mod posts;
 pub mod schema;

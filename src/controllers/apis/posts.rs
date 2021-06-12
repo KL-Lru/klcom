@@ -69,20 +69,26 @@ pub async fn create(
   Ok(HttpResponse::NoContent().finish())
 }
 
+#[derive(Deserialize)]
+pub struct UrlId {
+  id: i32,
+}
+
 pub async fn update(
   info: web::Json<UpdatePost>,
+  p_info: web::Path<UrlId>,
   id: Identity,
   pool: web::Data<DbPool>,
 ) -> Result<HttpResponse, StatusError> {
   let conn = pool.get()?;
   let user = identity_user(id, &conn)?;
-  let post = Post::find_with_author(&info.id, &user.id, &conn)?;
+  let post = Post::find_with_author(&p_info.id, &user.id, &conn)?;
   match post {
     None => Ok(HttpResponse::NotFound().finish()),
     Some(target_post) => {
       Post::update(
         &Post {
-          id: info.id.clone(),
+          id: p_info.id.clone(),
           author: user.id,
           title: info.title.clone(),
           body: info.body.clone(),

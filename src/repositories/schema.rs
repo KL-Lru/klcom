@@ -1,4 +1,13 @@
 table! {
+    change_logs (id) {
+        id -> Int4,
+        title -> Varchar,
+        description -> Text,
+        changed_at -> Timestamptz,
+    }
+}
+
+table! {
     post_tags (id) {
         id -> Int4,
         post -> Int4,
@@ -47,4 +56,4 @@ joinable!(post_tags -> tags (tag));
 joinable!(posts -> users (author));
 joinable!(users -> user_roles (role));
 
-allow_tables_to_appear_in_same_query!(post_tags, posts, tags, user_roles, users,);
+allow_tables_to_appear_in_same_query!(change_logs, post_tags, posts, tags, user_roles, users,);
