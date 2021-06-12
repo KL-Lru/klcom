@@ -6,4 +6,7 @@ export const htmlRule: RuleSetRule = {
   loader: "html-loader"
 }
 
-export const htmlPlugin = new HtmlWepackPlugin({template: "./public/index.html"});
+export const htmlPlugin = new HtmlWepackPlugin({
+  template: "./public/index.html",
+  favicon: "./public/favicon.ico",
+});
