@@ -46,21 +46,19 @@ async fn main() -> std::io::Result<()> {
 
   // start server
   HttpServer::new(move || {
-    //let cors = configs::cors::cors_configure();
+    let cors = configs::cors::cors_configure();
     let identity = configs::identity::identity_configure();
     let logger = configs::logger::logger_configure();
     let json_config = configs::json::json_configure();
 
     App::new()
-      //.wrap(cors)
+      .wrap(cors)
       .wrap(identity)
       .wrap(logger)
       .data(db_pool.clone())
       .data(json_config)
       .configure(configs::routes::route_configure)
-      .default_service(
-        web::route().to(controllers::not_found),
-      )
+      .default_service(web::route().to(controllers::not_found))
   })
   .bind("127.0.0.1:8088")?
   .run()

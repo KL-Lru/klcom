@@ -1,9 +1,15 @@
 use actix_cors::Cors;
 use actix_web::http::header;
+use dotenv::dotenv;
+use std::env;
 
 pub fn cors_configure() -> Cors {
+  dotenv().ok();
+
+  let front_root = env::var("FRONT_ROOT").expect("FRONT_END must be set");
+
   Cors::default()
-    .allowed_origin("http://localhost:8088")
+    .allowed_origin(&front_root)
     .allowed_methods(vec!["GET", "POST", "PUT", "DELETE"])
     .allowed_headers(vec![header::AUTHORIZATION, header::ACCEPT])
     .allowed_header(header::CONTENT_TYPE)
