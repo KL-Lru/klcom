@@ -10,8 +10,6 @@ extends:
   - plugin:@typescript-eslint/recommended
   - plugin:@typescript-eslint/recommended-requiring-type-checking
   - prettier
-  - prettier/@typescript-eslint
-  - prettier/react
 parser: '@typescript-eslint/parser'
 parserOptions:
   ecmaFeatures:
@@ -28,6 +26,16 @@ plugins:
   - prettier
 rules: 
   react/prop-types: off
+  sort-imports: off
+  camelcase: off
+  import/order: 
+    - warn
+    - groups: 
+        - builtin
+        - external
+        - internal 
+      alphabetize:
+        order: asc
 settings:
   react: 
     version: detect
@@ -41,3 +49,6 @@ settings:
         - .json
         - .ts
         - .tsx
+  import/core-modules:
+    - react
+    - webpack
