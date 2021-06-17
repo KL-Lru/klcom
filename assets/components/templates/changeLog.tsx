@@ -1,13 +1,16 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core';
 import moment from 'moment';
-import { Accordion } from 'components/atoms/accordion';
-import { AccordionDetails } from 'components/atoms/accordionDetails';
-import { AccordionSummary } from 'components/atoms/accordionSummary';
-import { DefinitionItem } from 'components/atoms/definitionItem';
-import { DefinitionList } from 'components/atoms/definitionList';
-import { ExpandMore } from 'components/atoms/icon';
-import { ChangeLog } from 'types/changeLog';
+import { useQuery } from 'react-query';
+import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+  DefinitionItem,
+  DefinitionList,
+} from 'components/atoms';
+import { ExpandMore } from 'components/atoms/icons';
+import { getChangeLogs } from 'requests/internal/change_logs';
 
 const useStyles = makeStyles(() => ({
   date: {
@@ -15,37 +18,33 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-type Props = {
-  logs: ChangeLog[];
-};
-
-export const ChangeLogPresenter: React.VFC<Props> = ({ logs }) => {
+export const ChangeLog: React.VFC = () => {
   const classes = useStyles();
+  const { data: logs = [] } = useQuery(['changeLog'], () => getChangeLogs());
+
+  if(logs.length == 0) return(<div> 更新履歴はありません. </div>);
   return (
     <>
-      {logs.length == 0 ? (
-        <div> 更新履歴はありません. </div>
-      ) : (
-        logs.map(log => (
-          <DefinitionList key = {log.id}>
-            <DefinitionItem
-              term={
-                <span className={classes.date}>
-                  {moment(log.changed_at).format('YYYY-MM-DD')}
-                </span>
-              }
-              description={
-                <Accordion elevation={0}>
-                  <AccordionSummary expandIcon={<ExpandMore />}>
-                    {log.title}
-                  </AccordionSummary>
-                  <AccordionDetails>{log.description}</AccordionDetails>
-                </Accordion>
-              }
-            />
-          </DefinitionList>
-        ))
-      )}
+      {logs.map(log => (
+        <DefinitionList key={log.id}>
+          <DefinitionItem
+            term={
+              <span className={classes.date}>
+                {"hoge"  || moment(log.changed_at).format('YYYY-MM-DD')}
+              </span>
+            }
+            description={
+              <Accordion elevation={0}>
+                <AccordionSummary expandIcon={<ExpandMore />}>
+                  {log.title}
+                </AccordionSummary>
+                <AccordionDetails>{log.description}</AccordionDetails>
+              </Accordion>
+            }
+          />
+        </DefinitionList>
+      ))
+      }
     </>
   );
 };

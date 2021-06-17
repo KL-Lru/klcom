@@ -9,15 +9,15 @@ import 'constants/fonts';
 const useStyles = makeStyles(() => ({
   main: {
     maxWidth: '1024px',
-  }
-}))
+  },
+}));
 
 export const App: React.FC = () => {
   const classes = useStyles();
   return (
     <Container className={classes.main}>
       <ThemeProvider>
-        <QueryProvider >
+        <QueryProvider>
           <Router />
         </QueryProvider>
       </ThemeProvider>

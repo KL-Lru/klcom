@@ -6,5 +6,6 @@ type Props = {
 };
 
 export const ExternalLink: React.VFC<Props> = ({ url, children }) => {
-  return <a href={url}>{children}</a>;
+  const href = url.startsWith('http') ? url : '#';
+  return <a href={href}>{children}</a>;
 };

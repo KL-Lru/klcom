@@ -1,13 +1,26 @@
 import React from 'react';
-import { Avatar } from 'components/atoms/avatar';
-import { Chip } from 'components/atoms/chip';
-import { ChipList } from 'components/atoms/chipList';
-import { ChipListItem } from 'components/atoms/chipListItem';
-import { DefinitionItem } from 'components/atoms/definitionItem';
-import { DefinitionList } from 'components/atoms/definitionList';
-import { ExternalLink } from 'components/atoms/externalLink';
-import { CppIcon, PythonIcon, RubyIcon, RustIcon, TypescriptIcon, MysqlIcon, PostgresIcon, KubernetesIcon, RailsIcon, ReactIcon } from 'components/atoms/icon';
-import { BasicBlock } from 'components/molecules/basicBlock';
+import {
+  Avatar,
+  Chip,
+  FlatList,
+  FlatListItem,
+  DefinitionItem,
+  DefinitionList,
+  ExternalLink,
+} from 'components/atoms';
+import {
+  CppIcon,
+  PythonIcon,
+  RubyIcon,
+  RustIcon,
+  TypescriptIcon,
+  MysqlIcon,
+  PostgresIcon,
+  KubernetesIcon,
+  RailsIcon,
+  ReactIcon,
+} from 'components/atoms/icons';
+import { BasicBlock } from 'components/molecules';
 import { TWITTER_LINK, GITHUB_LINK } from 'constants/links';
 import { EMAIL_ADDRESS } from 'constants/mail_address';
 
@@ -31,32 +44,23 @@ export const Profile: React.VFC = () => {
       body={
         <DefinitionList>
           <DefinitionItem term={'Author'} description={'えるる(Lru)'} />
-          <DefinitionItem
-            term={'Email'}
-            description={EMAIL_ADDRESS}
-          />
+          <DefinitionItem term={'Email'} description={EMAIL_ADDRESS} />
           <DefinitionItem
             term={'Twitter'}
             description={
-              <ExternalLink url={TWITTER_LINK}>
-                @kilattoeruru
-              </ExternalLink>
+              <ExternalLink url={TWITTER_LINK}>@kilattoeruru</ExternalLink>
             }
           />
           <DefinitionItem
             term={'Github'}
-            description={
-              <ExternalLink url={GITHUB_LINK}>
-                KL-Lru
-              </ExternalLink>
-            }
+            description={<ExternalLink url={GITHUB_LINK}>KL-Lru</ExternalLink>}
           />
           <DefinitionItem
             term={'Skills'}
             description={
-              <ChipList>
+              <FlatList>
                 {skills.map(({ label, icon }) => (
-                  <ChipListItem key={label}>
+                  <FlatListItem key={label}>
                     <Chip
                       avatar={<Avatar>{icon}</Avatar>}
                       label={label}
@@ -64,13 +68,13 @@ export const Profile: React.VFC = () => {
                       size='small'
                       variant='outlined'
                     />
-                  </ChipListItem>
+                  </FlatListItem>
                 ))}
-              </ChipList>
+              </FlatList>
             }
           />
         </DefinitionList>
       }
     />
-  )
-}
+  );
+};

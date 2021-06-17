@@ -1,12 +1,13 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { Meta } from 'components/atoms';
 import { SignIn } from 'components/pages/signIn';
 import { Top } from 'components/pages/top';
 import { routings } from 'constants/routings';
-import { MetaContainer } from 'containers/atoms/meta';
-import { RouteComponentMap } from 'types/routes';
+import { RouteKey } from 'types/routes';
 import { strictEntries } from 'utils/object';
 
+type RouteComponentMap = Record<RouteKey, React.ReactNode>
 export const routeMap: RouteComponentMap = {
   top: <Top />,
   sign_in: <SignIn />,
@@ -20,16 +21,14 @@ export const Router: React.FC = () => {
     <BrowserRouter>
       <Switch>
         {strictEntries(routeMap).map(([routeKey, component], routeIdx) => {
-          const { path, exact, metas} = routings[routeKey];
+          const { path, label, exact} = routings[routeKey];
           return (
             <Route 
               path = {path}
               exact = {exact}
               key = {routeIdx}
             >
-              {metas != null && metas.map((meta, metaIdx) => {
-                return <MetaContainer { ...(meta) } key = { metaIdx }/>
-              })}
+              <Meta variant={'title'} value={label}/>
               {component}
             </Route>
           )

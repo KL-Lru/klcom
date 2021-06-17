@@ -1,8 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core';
 import clsx from 'clsx';
-import { Link } from 'components/atoms/link';
-import { Typography } from 'components/atoms/typography';
+import { InternalLink, Typography } from 'components/atoms';
 import { routings } from 'constants/routings';
 import { SITE_NAME } from 'constants/siteName';
 
@@ -13,7 +12,7 @@ const useStyles = makeStyles(theme => ({
   logo: {
     color: theme.palette.primary.main,
     fontWeight: 'bold',
-    fontFamily: 'raleway'
+    fontFamily: 'raleway',
   },
 }));
 
@@ -21,7 +20,7 @@ export const Logo: React.VFC = () => {
   const classes = useStyles();
 
   return (
-    <Link to={routings.top.path} className={classes.logoLink}>
+    <InternalLink to={routings.top.path} className={classes.logoLink}>
       <Typography
         variant='h3'
         align='left'
@@ -31,6 +30,6 @@ export const Logo: React.VFC = () => {
       >
         {SITE_NAME}
       </Typography>
-    </Link>
+    </InternalLink>
   );
 };

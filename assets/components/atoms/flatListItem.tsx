@@ -12,7 +12,7 @@ type Props = {
   children: React.ReactNode;
 }
 
-export const ChipListItem: React.VFC<Props> = ({children}) => {
+export const FlatListItem: React.VFC<Props> = ({children}) => {
   const classes = useStyles();
   return (
     <li className={clsx(classes.item)}>

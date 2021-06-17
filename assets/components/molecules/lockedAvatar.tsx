@@ -1,8 +1,8 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core';
 import clsx from 'clsx';
-import { Avatar } from 'components/atoms/avatar';
-import { LockOutlined } from 'components/atoms/icon';
+import { Avatar } from 'components/atoms';
+import { LockOutlined } from 'components/atoms/icons';
 
 const useStyles = makeStyles(theme => ({
   avatar: {

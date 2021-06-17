@@ -17,7 +17,7 @@ type Props = {
   children: React.ReactNode;
 }
 
-export const ChipList: React.VFC<Props> = ({children}) => {
+export const FlatList: React.VFC<Props> = ({children}) => {
   const classes = useStyles();
   return (
     <ul className={clsx(classes.list)}>

@@ -1,10 +1,9 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core';
 import clsx from 'clsx';
-import { Paper } from 'components/atoms/paper';
-import { Typography } from 'components/atoms/typography';
+import { Paper, Typography } from 'components/atoms';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   paper: {
     paddingTop: theme.spacing(1),
     paddingBottom: theme.spacing(5),
@@ -28,10 +27,19 @@ export const BasicBlock: React.VFC<Props> = ({ title, body, id }) => {
   const classes = useStyles();
   return (
     <Paper elevation={0} className={clsx(classes.paper)}>
-      <Typography className={clsx(classes.title)} variant={'h4'} component={'div'} id={id}>
+      <Typography
+        className={clsx(classes.title)}
+        variant={'h4'}
+        component={'div'}
+        id={id}
+      >
         {title}
       </Typography>
-      <Typography className={clsx(classes.body)} variant={'body1'}  component={'div'}>
+      <Typography
+        className={clsx(classes.body)}
+        variant={'body1'}
+        component={'div'}
+      >
         {body}
       </Typography>
     </Paper>

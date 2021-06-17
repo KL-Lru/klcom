@@ -1,13 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core';
 import clsx from 'clsx';
-import { Controller, Control, UseFormHandleSubmit } from 'react-hook-form';
-import { Alert } from 'components/atoms/alert';
-import { Button } from 'components/atoms/button';
-import { Container } from 'components/atoms/container';
-import { TextField } from 'components/atoms/textField';
-import { Typography } from 'components/atoms/typography';
-import { LockedAvatar } from 'components/molecules/lockedAvatar';
+import { Controller, useForm } from 'react-hook-form';
+
+import { Redirect } from 'react-router-dom';
+import {
+  Alert,
+  Button,
+  Container,
+  TextField,
+  Typography,
+} from 'components/atoms';
+import { LockedAvatar } from 'components/molecules';
+import { signIn } from 'requests/internal/authorize';
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -30,19 +35,7 @@ type FormValue = {
   password: string;
 };
 
-type Props = {
-  control: Control<FormValue>;
-  error: string;
-  handleSubmit: UseFormHandleSubmit<FormValue>;
-  onSubmit: (data: FormValue) => void;
-};
-
-export const SignInForm: React.VFC<Props> = ({
-  control,
-  error,
-  handleSubmit,
-  onSubmit,
-}) => {
+export const SignInForm: React.VFC = () => {
   const classes = useStyles();
   const formInputOptions = {
     variant: 'outlined',
@@ -50,13 +43,33 @@ export const SignInForm: React.VFC<Props> = ({
     required: true,
     fullWidth: true,
   } as const;
+  const { handleSubmit, control } = useForm<FormValue>({
+    mode: 'onBlur',
+    defaultValues: {
+      email: '',
+      password: '',
+    },
+  });
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState(false);
 
+  const onSubmit = (data: FormValue) => {
+    signIn(data)
+      .then(() => {
+        setSuccess(true);
+      })
+      .catch(() => {
+        setError('Sign in failed.');
+      });
+  };
+
+  if (success) return <Redirect to='/'></Redirect>;
   return (
     <Container className={clsx(classes.paper)} maxWidth='xs'>
       <LockedAvatar />
       <Typography variant='h5'>Sign in</Typography>
       <form className={classes.form}>
-        {error.length != 0 && <Alert severity='error' >{error}</Alert>}
+        {error.length != 0 && <Alert severity='error'>{error}</Alert>}
         <Controller
           name='email'
           control={control}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Alert } from 'components/atoms/alert';
+import { Alert } from 'components/atoms';
 
 type Props = {
   error: Error;

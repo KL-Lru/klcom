@@ -1,9 +1,10 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core';
 import clsx from 'clsx';
-import { Toolbar } from 'components/atoms/toolbar';
-import { NavLink } from 'components/molecules/navLink';
-import { RouteConfig } from 'types/routes';
+import { Toolbar } from 'components/atoms';
+import { ButtonLink } from 'components/molecules';
+import { routings } from 'constants/routings';
+import { strictValues } from 'utils/object';
 
 const useStyles = makeStyles(theme => ({
   toolbar: {
@@ -14,18 +15,15 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-type Props = {
-  items: RouteConfig[];
-}
-
-export const NavHeader: React.VFC<Props> = ({items}) => {
+export const NavHeader: React.VFC = () => {
   const classes = useStyles();
+  const items = strictValues(routings);
 
   return (
-    <Fragment>
-      <Toolbar component='nav' variant='dense' className={clsx(classes.toolbar)}>
-        {items.map((route) => <NavLink route = {route} key={route.path}/>)}
-      </Toolbar>
-    </Fragment>
+    <Toolbar component='nav' variant='dense' className={clsx(classes.toolbar)}>
+      {items.map(route => (
+        <ButtonLink path={route.path} label={route.label} key={route.path} />
+      ))}
+    </Toolbar>
   );
 };

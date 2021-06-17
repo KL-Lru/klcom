@@ -1,9 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core';
 import clsx from 'clsx';
-import { Button } from 'components/atoms/button';
-import { Link } from 'components/atoms/link';
-import { RouteConfig } from 'types/routes';
+import { Button, InternalLink } from 'components/atoms';
 
 const useStyles = makeStyles(theme => ({
   link: {
@@ -16,17 +14,18 @@ const useStyles = makeStyles(theme => ({
 }));
 
 type Props = {
-  route: RouteConfig;
+  path: string;
+  label: string;
 };
 
-export const NavLink: React.VFC<Props> = ({ route }) => {
+export const ButtonLink: React.VFC<Props> = ({ path, label }) => {
   const classes = useStyles();
 
   return (
-    <Link to={route.path} className={clsx(classes.link)}>
+    <InternalLink to={path} className={clsx(classes.link)}>
       <Button className={clsx(classes.linkButton)} fullWidth>
-        {route.label}
+        {label}
       </Button>
-    </Link>
+    </InternalLink>
   );
 };
