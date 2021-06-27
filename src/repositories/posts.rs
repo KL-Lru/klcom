@@ -2,6 +2,10 @@ use crate::models::posts::{NewPost, Post, SearchPost};
 use crate::repositories::schema::posts;
 use chrono::Local;
 use diesel::prelude::*;
+use diesel::sql_types::{Nullable, Text};
+sql_function!{
+  fn coalesce(x: Nullable<Text>, y: Text) -> Text;
+}
 
 impl Post {
   pub fn search(
@@ -13,7 +17,7 @@ impl Post {
     use crate::repositories::schema::post_tags;
     let query = || {
       let mut query = posts::table
-        .inner_join(post_tags::table)
+        .left_outer_join(post_tags::table)
         .order(posts::id.desc())
         .into_boxed();
 
@@ -52,7 +56,7 @@ impl Post {
       }
       query
         .limit(PER_PAGE.into())
-        .select((posts::all_columns, post_tags::tag))
+        .select((posts::all_columns, coalesce(post_tags::tag.nullable(), "")))
     };
 
     let posts = query().load::<(Post, String)>(conn)?;
