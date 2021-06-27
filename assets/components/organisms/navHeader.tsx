@@ -3,8 +3,6 @@ import { makeStyles } from '@material-ui/core';
 import clsx from 'clsx';
 import { Toolbar } from 'components/atoms';
 import { ButtonLink } from 'components/molecules';
-import { routings } from 'constants/routings';
-import { strictValues } from 'utils/object';
 
 const useStyles = makeStyles(theme => ({
   toolbar: {
@@ -17,13 +15,12 @@ const useStyles = makeStyles(theme => ({
 
 export const NavHeader: React.VFC = () => {
   const classes = useStyles();
-  const items = strictValues(routings);
 
   return (
     <Toolbar component='nav' variant='dense' className={clsx(classes.toolbar)}>
-      {items.map(route => (
-        <ButtonLink path={route.path} label={route.label} key={route.path} />
-      ))}
+      <ButtonLink path={'/'} label={'Top'} />
+      <ButtonLink path={'/notes'} label={'Note'} />
+      <ButtonLink path={'/works'} label={'Work'} />
     </Toolbar>
   );
 };

@@ -8,7 +8,7 @@ import 'constants/fonts';
 
 const useStyles = makeStyles(() => ({
   main: {
-    maxWidth: '1024px',
+    width: '1024px',
   },
 }));
 

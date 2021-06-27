@@ -2,7 +2,6 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core';
 import clsx from 'clsx';
 import { InternalLink, Typography } from 'components/atoms';
-import { routings } from 'constants/routings';
 import { SITE_NAME } from 'constants/siteName';
 
 const useStyles = makeStyles(theme => ({
@@ -11,7 +10,7 @@ const useStyles = makeStyles(theme => ({
   },
   logo: {
     color: theme.palette.primary.main,
-    fontWeight: 'bold',
+    fontWeight: 200,
     fontFamily: 'raleway',
   },
 }));
@@ -20,7 +19,7 @@ export const Logo: React.VFC = () => {
   const classes = useStyles();
 
   return (
-    <InternalLink to={routings.top.path} className={classes.logoLink}>
+    <InternalLink to={"/"} className={classes.logoLink}>
       <Typography
         variant='h3'
         align='left'

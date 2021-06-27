@@ -1,11 +1,11 @@
 import React from 'react';
-import { BasicBlock } from 'components/molecules/basicBlock';
-import { Header } from 'components/templates/header';
+import { Meta } from 'components/atoms';
+import { BasicBlock } from 'components/molecules';
 
 export const Work: React.VFC = () => {
   return (
     <>
-      <Header />
+      <Meta variant="title" value = {'Works'} />
       <BasicBlock
         title={'Work'}
         id={'work'}

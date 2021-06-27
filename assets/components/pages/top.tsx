@@ -1,12 +1,13 @@
 import React from 'react';
+import { Meta } from 'components/atoms';
 import { BasicBlock } from 'components/molecules';
 import { Boundary } from 'components/molecules/boundary';
-import { ChangeLog, Header, Profile } from 'components/templates';
+import { ChangeLog, Profile } from 'components/templates';
 
 export const Top: React.VFC = () => {
   return (
     <>
-      <Header />
+      <Meta variant="title" value = {'Top'} />
       <Profile />
       <BasicBlock
         title={'Change Log'}

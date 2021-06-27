@@ -2,7 +2,7 @@
 export { Avatar, Button, Typography } from '@material-ui/core';
 
 // Layout
-export { Container, Paper, Toolbar } from '@material-ui/core';
+export { Container, Paper, Toolbar, Box } from '@material-ui/core';
 
 // Input
 export { TextField } from '@material-ui/core';
@@ -22,6 +22,11 @@ export { Alert } from '@material-ui/lab';
 
 // Chips
 export { Chip } from '@material-ui/core';
+
+// Cards
+export { Card } from '@material-ui/core';
+export { CardHeader } from '@material-ui/core';
+export { CardContent } from '@material-ui/core';
 
 // List
 export { List } from '@material-ui/core';

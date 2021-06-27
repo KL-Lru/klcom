@@ -1,16 +1,15 @@
 import React from 'react';
-import { BasicBlock } from 'components/molecules/basicBlock';
-import { Header } from 'components/templates/header';
+import { Meta } from 'components/atoms';
+import { Boundary } from 'components/molecules';
+import { PostList } from 'components/templates';
 
 export const Note: React.VFC = () => {
   return (
     <>
-      <Header />
-      <BasicBlock
-        title={'Note'}
-        id={'note'}
-        body={"準備中..."}
-      />
+      <Meta variant="title" value = {'Notes'} />
+      <Boundary>
+        <PostList />
+      </Boundary>
     </>
   )
 }

@@ -5,16 +5,19 @@ import clsx from 'clsx';
 import { TableCell , TableRow } from 'components/atoms';
 
 const useStyles = makeStyles(theme => ({
+  cellRoot: {
+    "&.MuiTableCell-root":{
+      borderBottom: 'none',
+    }
+  },
   term: {
     whiteSpace: 'nowrap',
     wordBreak: 'keep-all',
     paddingLeft: 0,
-    border: 'none',
     borderRight: `dashed 1px ${theme.palette.divider}`,
   },
   description: {
     width: '100%',
-    border: 'none',
   },
 }));
 
@@ -27,8 +30,8 @@ export const DefinitionItem: React.VFC<Props> = ({ term, description }) => {
   const classes = useStyles();
   return (
     <TableRow>
-      <TableCell className={clsx(classes.term)}>{term}</TableCell>
-      <TableCell className={clsx(classes.description)}>{description}</TableCell>
+      <TableCell className={clsx(classes.term, classes.cellRoot)}>{term}</TableCell>
+      <TableCell className={clsx(classes.description, classes.cellRoot)}>{description}</TableCell>
     </TableRow>
   );
 };
