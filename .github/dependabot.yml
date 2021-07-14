@@ -1,0 +1,23 @@
+
+# https://help.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
+
+version: 2
+updates:
+  - package-ecosystem: cargo
+    directory: / 
+    schedule:
+      interval: daily
+    commit-message:
+      prefix: "[Rust] "
+    labels:
+      - dependencies
+      - rust
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: daily
+    commit-message:
+      prefix: "[Node] "
+    labels:
+      - dependencies
+      - typescript
