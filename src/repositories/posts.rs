@@ -3,7 +3,7 @@ use crate::repositories::schema::posts;
 use chrono::Local;
 use diesel::prelude::*;
 use diesel::sql_types::{Nullable, Text};
-sql_function!{
+sql_function! {
   fn coalesce(x: Nullable<Text>, y: Text) -> Text;
 }
 

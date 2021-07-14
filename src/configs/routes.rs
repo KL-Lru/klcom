@@ -21,7 +21,7 @@ pub fn route_configure(cfg: &mut web::ServiceConfig) {
         .service(
           web::resource("/{id}")
             .route(web::get().to(controllers::apis::posts::show))
-            .route(web::put().to(controllers::apis::posts::update))
+            .route(web::put().to(controllers::apis::posts::update)),
         ),
     )
     .service(

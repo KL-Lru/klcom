@@ -34,7 +34,11 @@ pub async fn show(
     None => Ok(HttpResponse::NotFound().finish()),
     Some(post) => {
       let body = json!(post).to_string();
-      Ok(HttpResponse::Ok().content_type("application/json").body(body))
+      Ok(
+        HttpResponse::Ok()
+          .content_type("application/json")
+          .body(body),
+      )
     }
   }
 }
