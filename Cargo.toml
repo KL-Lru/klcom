@@ -16,7 +16,7 @@ actix-web-codegen = "0.4.0"
 actix-cors = "0.5.3"
 
 actix-rt = "1.1.1"
-actix-utils = "2.0.0"
+actix-utils = "3.0.0"
 actix-redis = "0.9.1"
 actix-session = "0.4.0"
 actix-identity = "0.3.1"
