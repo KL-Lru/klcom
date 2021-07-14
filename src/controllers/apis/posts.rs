@@ -56,7 +56,7 @@ pub async fn create(
       author: user.id,
       title: info.title.clone(),
       body: info.body.clone(),
-      publish: info.publish.clone(),
+      publish: info.publish,
     },
     &conn,
   )?;
@@ -82,13 +82,13 @@ pub async fn update(
     Some(target_post) => {
       Post::update(
         &Post {
-          id: p_info.id.clone(),
+          id: p_info.id,
           author: user.id,
           title: info.title.clone(),
           body: info.body.clone(),
-          publish: info.publish.clone(),
-          created_at: target_post.created_at.clone(),
-          updated_at: target_post.updated_at.clone(),
+          publish: info.publish,
+          created_at: target_post.created_at,
+          updated_at: target_post.updated_at,
         },
         &conn,
       )?;
@@ -102,7 +102,7 @@ fn make_post_list(rows: Vec<(Post, String)>) -> Vec<IndexPost> {
   let mut post_hash: HashMap<i32, Post> = HashMap::new();
   for row in rows {
     let id = row.0.id;
-    tag_hash.entry(id).or_insert(vec![]);
+    tag_hash.entry(id).or_insert_with(Vec::new);
     tag_hash.get_mut(&id).unwrap().push(row.1);
     post_hash.entry(id).or_insert(row.0);
   }

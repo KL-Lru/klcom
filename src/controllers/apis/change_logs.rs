@@ -54,7 +54,7 @@ pub async fn update(
     Some(tar) => {
       ChangeLog::update(
         &UpdateChangeLog {
-          id: tar.id.clone(),
+          id: tar.id,
           title: info.title.clone(),
           description: info.description.clone(),
         },

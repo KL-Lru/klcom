@@ -12,7 +12,7 @@ pub fn execute(pool: DbPool) -> Result<(), TaskError> {
     match UserRole::find(&user_role.id, &conn)? {
       None => {
         let regist = NewUserRole {
-          id: user_role.id.clone(),
+          id: user_role.id,
           role_name: user_role.role_name.clone(),
         };
         UserRole::create(&regist, &conn)?;
@@ -20,7 +20,7 @@ pub fn execute(pool: DbPool) -> Result<(), TaskError> {
       Some(role) => {
         if role.role_name != user_role.role_name {
           let regist = UserRole {
-            id: user_role.id.clone(),
+            id: user_role.id,
             role_name: user_role.role_name.clone(),
           };
           UserRole::update(&regist, &conn)?;
