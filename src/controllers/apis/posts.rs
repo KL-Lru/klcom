@@ -24,29 +24,19 @@ pub async fn index(
   )
 }
 
-fn make_post_list(rows: Vec<(Post, String)>) -> Vec<IndexPost> {
-  let mut tag_hash: HashMap<i32, Vec<String>> = HashMap::new();
-  let mut post_hash: HashMap<i32, Post> = HashMap::new();
-  for row in rows {
-    let id = row.0.id;
-    tag_hash.entry(id).or_insert(vec![]);
-    tag_hash.get_mut(&id).unwrap().push(row.1);
-    post_hash.entry(id).or_insert(row.0);
+pub async fn show(
+  p_info: web::Path<UrlId>,
+  pool: web::Data<DbPool>,
+) -> Result<HttpResponse, StatusError> {
+  let conn = pool.get()?;
+  let result = Post::find(&p_info.id, &conn)?;
+  match result {
+    None => Ok(HttpResponse::NotFound().finish()),
+    Some(post) => {
+      let body = json!(post).to_string();
+      Ok(HttpResponse::Ok().content_type("application/json").body(body))
+    }
   }
-
-  post_hash
-    .into_iter()
-    .map(|(id, post)| IndexPost {
-      id: post.id,
-      author: post.author,
-      title: post.title,
-      body: post.body,
-      publish: post.publish,
-      created_at: post.created_at,
-      updated_at: post.updated_at,
-      tags: tag_hash.get(&id).unwrap_or(&vec![]).clone(),
-    })
-    .collect()
 }
 
 pub async fn create(
@@ -101,4 +91,29 @@ pub async fn update(
       Ok(HttpResponse::NoContent().finish())
     }
   }
+}
+
+fn make_post_list(rows: Vec<(Post, String)>) -> Vec<IndexPost> {
+  let mut tag_hash: HashMap<i32, Vec<String>> = HashMap::new();
+  let mut post_hash: HashMap<i32, Post> = HashMap::new();
+  for row in rows {
+    let id = row.0.id;
+    tag_hash.entry(id).or_insert(vec![]);
+    tag_hash.get_mut(&id).unwrap().push(row.1);
+    post_hash.entry(id).or_insert(row.0);
+  }
+
+  post_hash
+    .into_iter()
+    .map(|(id, post)| IndexPost {
+      id: post.id,
+      author: post.author,
+      title: post.title,
+      body: post.body,
+      publish: post.publish,
+      created_at: post.created_at,
+      updated_at: post.updated_at,
+      tags: tag_hash.get(&id).unwrap_or(&vec![]).clone(),
+    })
+    .collect()
 }

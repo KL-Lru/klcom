@@ -18,7 +18,11 @@ pub fn route_configure(cfg: &mut web::ServiceConfig) {
             .route(web::get().to(controllers::apis::posts::index))
             .route(web::post().to(controllers::apis::posts::create)),
         )
-        .service(web::resource("/{id}").route(web::put().to(controllers::apis::posts::update))),
+        .service(
+          web::resource("/{id}")
+            .route(web::get().to(controllers::apis::posts::show))
+            .route(web::put().to(controllers::apis::posts::update))
+        ),
     )
     .service(
       web::scope("change_logs")
