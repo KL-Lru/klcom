@@ -6,6 +6,7 @@ export { Container, Paper, Toolbar, Box } from '@material-ui/core';
 
 // Input
 export { TextField } from '@material-ui/core';
+export { Switch } from '@material-ui/core';
 
 // Progress
 export { Backdrop, CircularProgress as Progress } from '@material-ui/core';
@@ -25,6 +26,8 @@ export { Chip } from '@material-ui/core';
 
 // Cards
 export { Card } from '@material-ui/core';
+export { CardActionArea } from '@material-ui/core';
+export { CardActions } from '@material-ui/core';
 export { CardHeader } from '@material-ui/core';
 export { CardContent } from '@material-ui/core';
 
@@ -32,21 +35,22 @@ export { CardContent } from '@material-ui/core';
 export { List } from '@material-ui/core';
 export { ListItem } from '@material-ui/core';
 export { ListItemText } from '@material-ui/core';
-export { FlatList } from 'components/atoms/flatList';
-export { FlatListItem } from 'components/atoms/flatListItem';
+export { FlatList } from 'components/atoms/flat/flatList';
+export { FlatListItem } from 'components/atoms/flat/flatListItem';
 
 // Definition
-export { DefinitionList } from 'components/atoms/definitionList';
-export { DefinitionItem } from 'components/atoms/definitionItem';
+export { DefinitionList } from 'components/atoms/definition/definitionList';
+export { DefinitionItem } from 'components/atoms/definition/definitionItem';
 
 // Error
-export { ErrorFallback } from 'components/atoms/errorFallback';
+export { ErrorFallback } from 'components/atoms/fallback/errorFallback';
 export { ErrorBoundary } from 'react-error-boundary';
 export { Suspense } from 'react';
 
 // Link
-export { ExternalLink } from 'components/atoms/externalLink';
-export { Link as InternalLink } from 'react-router-dom';
+export { Link } from '@material-ui/core';
+export { ExternalLink } from 'components/atoms/links/externalLink';
+export { InternalLink } from 'components/atoms/links/internalLink';
 
 // Meta
 export { Meta } from 'components/atoms/meta';
