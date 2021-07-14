@@ -12,7 +12,15 @@ export const babelRule: RuleSetRule & {options: Partial<TransformOptions>} = {
         modules: false,
         targets: "defaults",
       }],
-      "@babel/react"
+      "@babel/react",
     ],
+    plugins: [
+      ["prismjs", {
+        languages: ["css", "html", "cpp"],
+        plugins: ["line-numbers", "show-language"],
+        theme: "okaidia",
+        css: true,
+      }],
+    ]
   },
 };

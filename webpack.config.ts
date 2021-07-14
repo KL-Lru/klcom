@@ -13,12 +13,15 @@ interface Configuration extends WebpackConfiguration {
   devServer?: WebpackDevServerConfiguration;
 }
 
+const ASSET_PATH = process.env.ASSET_PATH || '/';
+
 const config: Configuration = {
   entry: './assets/app.tsx',
   mode: 'development',
   devtool: 'source-map',
   output: {
     path: path.join(__dirname, 'public/bundle'),
+    publicPath: ASSET_PATH,
     filename: '[name].bundle.js',
     chunkFilename: '[name].chunk.js',
   },
