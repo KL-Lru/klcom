@@ -102,7 +102,7 @@ fn make_post_list(rows: Vec<(Post, String)>) -> Vec<IndexPost> {
   let mut post_hash: HashMap<i32, Post> = HashMap::new();
   for row in rows {
     let id = row.0.id;
-    tag_hash.entry(id).or_insert(vec![]);
+    tag_hash.entry(id).or_insert_with(Vec::new);
     tag_hash.get_mut(&id).unwrap().push(row.1);
     post_hash.entry(id).or_insert(row.0);
   }
