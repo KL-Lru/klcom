@@ -1,7 +1,6 @@
 use crate::models::users::User;
 use crate::repositories::schema::posts;
 use chrono::NaiveDateTime;
-use diesel::Identifiable;
 #[derive(
   Debug,
   Clone,
@@ -9,7 +8,6 @@ use diesel::Identifiable;
   Deserialize,
   Eq,
   PartialEq,
-  Identifiable,
   Associations,
   Queryable,
   AsChangeset,

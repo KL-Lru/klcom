@@ -1,8 +1,7 @@
 use crate::repositories::schema::tags;
-use diesel::Identifiable;
 
 #[derive(
-  Debug, Clone, Serialize, Deserialize, Eq, PartialEq, Identifiable, Queryable, AsChangeset,
+  Debug, Clone, Serialize, Deserialize, Eq, PartialEq, Queryable, AsChangeset,
 )]
 #[table_name = "tags"]
 #[primary_key("tag_name")]

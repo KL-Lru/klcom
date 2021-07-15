@@ -1,6 +1,5 @@
 use crate::models::user_roles::UserRole;
 use crate::repositories::schema::users;
-use diesel::Identifiable;
 
 #[derive(
   Debug,
@@ -9,7 +8,6 @@ use diesel::Identifiable;
   Deserialize,
   Eq,
   PartialEq,
-  Identifiable,
   Associations,
   Queryable,
   AsChangeset,

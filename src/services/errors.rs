@@ -4,13 +4,13 @@ use log::error;
 
 #[derive(Debug, Display)]
 pub enum StatusError {
-  #[display(fmt = "[ERR]:Not Found")]
+  #[display[fmt = "[ERR]:Not Found"]]
   NotFound,
-  #[display(fmt = "[ERR]:SQL connect Error")]
+  #[display[fmt = "[ERR]:SQL connect Error"]]
   SQLError,
-  #[display(fmt = "[ERR]:Unauthorized")]
+  #[display[fmt = "[ERR]:Unauthorized"]]
   Unauthorized,
-  #[display(fmt = "[ERR]:Forbidden")]
+  #[display[fmt = "[ERR]:Forbidden"]]
   Forbidden,
   InternalServerError,
 }
