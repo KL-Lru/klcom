@@ -1,9 +1,6 @@
 use crate::repositories::schema::post_tags;
-use diesel::Identifiable;
 
-#[derive(
-  Debug, Clone, Serialize, Deserialize, Eq, PartialEq, Identifiable, Queryable, AsChangeset,
-)]
+#[derive(Debug, Clone, Serialize, Deserialize, Eq, PartialEq, Queryable, AsChangeset)]
 #[table_name = "post_tags"]
 #[primary_key("id")]
 pub struct PostTag {

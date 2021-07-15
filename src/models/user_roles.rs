@@ -1,17 +1,7 @@
 use crate::repositories::schema::user_roles;
-use diesel::Identifiable;
 
 #[derive(
-  Debug,
-  Clone,
-  Serialize,
-  Deserialize,
-  Eq,
-  PartialEq,
-  Identifiable,
-  Associations,
-  Queryable,
-  AsChangeset,
+  Debug, Clone, Serialize, Deserialize, Eq, PartialEq, Associations, Queryable, AsChangeset,
 )]
 #[table_name = "user_roles"]
 #[primary_key("role_name")]

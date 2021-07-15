@@ -1,18 +1,8 @@
 use crate::models::user_roles::UserRole;
 use crate::repositories::schema::users;
-use diesel::Identifiable;
 
 #[derive(
-  Debug,
-  Clone,
-  Serialize,
-  Deserialize,
-  Eq,
-  PartialEq,
-  Identifiable,
-  Associations,
-  Queryable,
-  AsChangeset,
+  Debug, Clone, Serialize, Deserialize, Eq, PartialEq, Associations, Queryable, AsChangeset,
 )]
 #[belongs_to(UserRole, foreign_key = "role")]
 #[table_name = "users"]
