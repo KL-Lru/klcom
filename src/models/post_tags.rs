@@ -1,8 +1,6 @@
 use crate::repositories::schema::post_tags;
 
-#[derive(
-  Debug, Clone, Serialize, Deserialize, Eq, PartialEq, Queryable, AsChangeset,
-)]
+#[derive(Debug, Clone, Serialize, Deserialize, Eq, PartialEq, Queryable, AsChangeset)]
 #[table_name = "post_tags"]
 #[primary_key("id")]
 pub struct PostTag {

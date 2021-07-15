@@ -1,8 +1,6 @@
 use crate::repositories::schema::tags;
 
-#[derive(
-  Debug, Clone, Serialize, Deserialize, Eq, PartialEq, Queryable, AsChangeset,
-)]
+#[derive(Debug, Clone, Serialize, Deserialize, Eq, PartialEq, Queryable, AsChangeset)]
 #[table_name = "tags"]
 #[primary_key("tag_name")]
 pub struct Tag {

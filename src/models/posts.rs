@@ -2,15 +2,7 @@ use crate::models::users::User;
 use crate::repositories::schema::posts;
 use chrono::NaiveDateTime;
 #[derive(
-  Debug,
-  Clone,
-  Serialize,
-  Deserialize,
-  Eq,
-  PartialEq,
-  Associations,
-  Queryable,
-  AsChangeset,
+  Debug, Clone, Serialize, Deserialize, Eq, PartialEq, Associations, Queryable, AsChangeset,
 )]
 #[belongs_to(User, foreign_key = "author")]
 #[table_name = "posts"]
