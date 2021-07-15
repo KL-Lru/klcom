@@ -957,10 +957,10 @@
   resolved "https://registry.npmjs.org/@fontsource/lato/-/lato-4.4.5.tgz"
   integrity sha512-pm9am2tdLnK+21PKCK060oY8R8OKFVzTVvM6pPS+mS7JOZKe3mmDgfB2DGzzyHG/Azj3Pn6onU72BrQsh3XjNw==
 
-"@fontsource/noto-sans-jp@^4.4.2":
-  version "4.4.5"
-  resolved "https://registry.npmjs.org/@fontsource/noto-sans-jp/-/noto-sans-jp-4.4.5.tgz"
-  integrity sha512-yQB+WXHP3XLccKulWdHSxmzPE3oCHxa9vdQHoe7t28F08LGf3ADt9/zN44X0DQL5eWhvyoKcPGVvYb4y9gVAwQ==
+"@fontsource/noto-sans-jp@^4.5.0":
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/@fontsource/noto-sans-jp/-/noto-sans-jp-4.5.0.tgz#e9dbc9e3ccf37931da37cf932e6ceea7e1146499"
+  integrity sha512-BXe+enzyvI+iWYk7vr1cus0tc1wq8D7t08T1O5PuCZALJEYOPD3Knpl4ShVb6a9MXxaS25CjBhmc+r46uqyvpw==
 
 "@fontsource/play@^4.4.2":
   version "4.4.5"
