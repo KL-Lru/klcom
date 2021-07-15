@@ -16,7 +16,7 @@
     "@babel/core": "^7.12.3",
     "@babel/preset-env": "^7.12.1",
     "@babel/preset-react": "^7.13.13",
-    "@fontsource/lato": "^4.4.2",
+    "@fontsource/lato": "^4.5.0",
     "@fontsource/noto-sans-jp": "^4.4.2",
     "@fontsource/play": "^4.4.2",
     "@fontsource/raleway": "^4.4.2",
