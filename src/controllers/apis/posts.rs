@@ -56,7 +56,7 @@ pub async fn create(
       author: user.id,
       title: info.title.clone(),
       body: info.body.clone(),
-      publish: info.publish.clone(),
+      publish: info.publish,
     },
     &conn,
   )?;
@@ -82,13 +82,13 @@ pub async fn update(
     Some(target_post) => {
       Post::update(
         &Post {
-          id: p_info.id.clone(),
+          id: p_info.id,
           author: user.id,
           title: info.title.clone(),
           body: info.body.clone(),
-          publish: info.publish.clone(),
-          created_at: target_post.created_at.clone(),
-          updated_at: target_post.updated_at.clone(),
+          publish: info.publish,
+          created_at: target_post.created_at,
+          updated_at: target_post.updated_at,
         },
         &conn,
       )?;

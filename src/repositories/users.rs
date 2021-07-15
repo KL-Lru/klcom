@@ -18,7 +18,7 @@ impl User {
       .first::<User>(conn)
       .optional()?;
 
-    return Ok(user);
+    Ok(user)
   }
 
   pub fn create(new_user: &NewUser, conn: &PgConnection) -> Result<User, diesel::result::Error> {

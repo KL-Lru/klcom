@@ -6,7 +6,7 @@ use diesel::prelude::PgConnection;
 pub fn identity_user(id: Identity, conn: &PgConnection) -> Result<User, StatusError> {
   if let Some(uid) = id.identity() {
     let user_id = uid.parse()?;
-    if let Some(user) = User::find(&user_id, &conn)? {
+    if let Some(user) = User::find(&user_id, conn)? {
       return Ok(user);
     }
   }

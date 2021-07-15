@@ -23,7 +23,7 @@ impl Post {
 
       // word search
       if let Some(words) = query_params.words.clone() {
-        let word_list: Vec<String> = words.split(",").map(|s| s.to_string()).collect();
+        let word_list: Vec<String> = words.split(',').map(|s| s.to_string()).collect();
         for word in word_list {
           query = query.filter(
             posts::title
@@ -36,12 +36,12 @@ impl Post {
 
       // tag search
       if let Some(tags) = query_params.tags.clone() {
-        let tag_list: Vec<String> = tags.split(",").map(|s| s.to_string()).collect();
+        let tag_list: Vec<String> = tags.split(',').map(|s| s.to_string()).collect();
         query = query.filter(post_tags::tag.eq_any(tag_list))
       }
 
       // pagenate
-      match query_params.page.clone() {
+      match query_params.page {
         Some(page) => {
           query = query.offset((page * PER_PAGE).into());
         }
