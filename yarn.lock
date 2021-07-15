@@ -962,10 +962,10 @@
   resolved "https://registry.npmjs.org/@fontsource/noto-sans-jp/-/noto-sans-jp-4.4.5.tgz"
   integrity sha512-yQB+WXHP3XLccKulWdHSxmzPE3oCHxa9vdQHoe7t28F08LGf3ADt9/zN44X0DQL5eWhvyoKcPGVvYb4y9gVAwQ==
 
-"@fontsource/play@^4.4.2":
-  version "4.4.5"
-  resolved "https://registry.npmjs.org/@fontsource/play/-/play-4.4.5.tgz"
-  integrity sha512-JyWCKzR8QcLS/kPO/eTmNnTQFuNpWXqls7f9c9yAyPDtwOsjv4UM6ZMJYMxq+QAwxYYySHlp4URjnvhlJMabWg==
+"@fontsource/play@^4.5.0":
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/@fontsource/play/-/play-4.5.0.tgz#94143a3ab8d2e6c521887669e401780b18ef2033"
+  integrity sha512-PccQNz1CJ3OLrY7jgVs9E2zQl68Wbz4KkUHGDCa8vxDyOYnQB6+pEzauylbnl0rCK8S9vgMMj5XLugK1x5DTZw==
 
 "@fontsource/raleway@^4.4.2":
   version "4.4.5"
