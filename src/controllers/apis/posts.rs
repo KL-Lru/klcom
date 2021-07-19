@@ -5,8 +5,8 @@ use crate::models::posts::{CreatePost, IndexPost, NewPost, Post, SearchPost, Upd
 use crate::repositories::connection::DbPool;
 use crate::services::errors::StatusError;
 use crate::services::identity::{identity_user, is_authorized};
-
 use std::collections::HashMap;
+use chrono::Local;
 
 pub async fn index(
   query: web::Query<SearchPost>,
@@ -30,6 +30,7 @@ pub async fn show(
 ) -> Result<HttpResponse, StatusError> {
   let conn = pool.get()?;
   let result = Post::find(&p_info.id, &conn)?;
+  
   match result {
     None => Ok(HttpResponse::NotFound().finish()),
     Some(post) => {
@@ -80,7 +81,7 @@ pub async fn update(
   match post {
     None => Ok(HttpResponse::NotFound().finish()),
     Some(target_post) => {
-      Post::update(
+      let updated = Post::update(
         &Post {
           id: p_info.id,
           author: user.id,
@@ -88,11 +89,12 @@ pub async fn update(
           body: info.body.clone(),
           publish: info.publish,
           created_at: target_post.created_at,
-          updated_at: target_post.updated_at,
+          updated_at: Local::now().naive_local(),
         },
         &conn,
       )?;
-      Ok(HttpResponse::NoContent().finish())
+      let body = json!(updated).to_string();
+      Ok(HttpResponse::Ok().content_type("application/json").body(body))
     }
   }
 }

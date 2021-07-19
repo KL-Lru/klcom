@@ -96,7 +96,7 @@ impl Post {
   pub fn update(post: &Post, conn: &PgConnection) -> Result<Post, diesel::result::Error> {
     diesel::update(posts::table)
       .filter(posts::id.eq(post.id))
-      .set((post, (posts::updated_at.eq(Local::now().naive_local()))))
+      .set(post)
       .get_result(conn)
   }
 }
