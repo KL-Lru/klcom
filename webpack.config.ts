@@ -8,6 +8,7 @@ import { optimizeConfig } from './assets/configs/optimization.config';
 import { definePlugin } from './assets/configs/define.config';
 import { styleRule } from './assets/configs/style.config';
 import { assetsRule } from './assets/configs/assets.config';
+import { editorPlugin } from './assets/configs/editor.config';
 
 interface Configuration extends WebpackConfiguration {
   devServer?: WebpackDevServerConfiguration;
@@ -49,7 +50,8 @@ const config: Configuration = {
   },
   plugins: [
     htmlPlugin,
-    definePlugin
+    definePlugin,
+    editorPlugin,
   ],
   optimization: optimizeConfig,
 };
