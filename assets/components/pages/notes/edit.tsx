@@ -2,7 +2,7 @@ import React from 'react';
 import { useParams } from 'react-router';
 import { ErrorFallback, Meta } from 'components/atoms';
 import { Boundary } from 'components/molecules';
-import { PostTemplate } from 'components/templates/postTemplate';
+import { PostEditor} from 'components/templates/postEditor';
 
 type ContextProp = {
   postId?: string;
@@ -18,7 +18,7 @@ export const Edit: React.VFC = () => {
     <>
       <Meta variant="title" value={"Post"} />
       <Boundary>
-        <PostTemplate postId={numId} />
+        <PostEditor postId={numId} />
       </Boundary>
     </>
   );

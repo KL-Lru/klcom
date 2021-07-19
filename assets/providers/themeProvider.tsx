@@ -1,11 +1,11 @@
 import React from 'react';
 import { colors } from '@material-ui/core';
 import {
-  createMuiTheme,
+  createTheme,
   ThemeProvider as BaseThemeProvider,
 } from '@material-ui/core/styles';
 
-export const theme = createMuiTheme({
+export const theme = createTheme({
   palette: {
     primary: {
       main: colors.cyan[800],

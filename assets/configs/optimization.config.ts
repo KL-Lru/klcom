@@ -10,7 +10,7 @@ export const optimizeConfig: Configuration["optimization"] = {
     chunks: 'all',
     cacheGroups: {
       react: {
-        test: /\/node_modules\/react\//,
+        test: /\/node_modules\/react[^\/]*?\//,
         name: 'react',
       },
       material_ui: {
@@ -19,11 +19,17 @@ export const optimizeConfig: Configuration["optimization"] = {
       },
       fonts: {
         test: /\/node_modules\/@fontsource\//,
-        name: 'font-source',
+        name: (module: {resourceResolveData: {descriptionFileData: {name: string}}}) => {
+          return module.resourceResolveData.descriptionFileData.name.slice(1);
+        },
       },
       devicon: {
         test: /\/node_modules\/devicon\//,
         name: 'devicon',
+      },
+      monaco: {
+        test: /\/node_modules\/monaco-editor\//,
+        name: 'monaco',
       }
     }
   }

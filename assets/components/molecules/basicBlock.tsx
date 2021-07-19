@@ -12,7 +12,7 @@ const useStyles = makeStyles(theme => ({
     marginBottom: '40px',
     fontWeight: 'lighter',
     letterSpacing: '0.02em',
-    fontFamily: 'raleway',
+    fontFamily: `raleway, ${theme.typography.fontFamily || ''}`,
   },
   body: {},
 }));

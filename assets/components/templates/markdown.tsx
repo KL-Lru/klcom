@@ -2,7 +2,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core';
 
-import clsx from 'clsx';
 import ReactMarkdown from 'react-markdown';
 import ReKatex from 'rehype-katex';
 import ReBreak from 'remark-breaks';
@@ -21,6 +20,8 @@ import {
   Typography,
 } from 'components/atoms';
 import 'katex/dist/katex.min.css';
+import { PrismCode } from 'components/molecules/prismCode';
+import { PrismPre } from 'components/molecules/prismPre';
 import { usePrism } from 'hooks/prism';
 
 const useStyles = makeStyles(theme => ({
@@ -53,7 +54,7 @@ export const Markdown: React.VFC<{ markdown: string }> = ({ markdown }) => {
   const classes = useStyles();
   return (
     <ReactMarkdown
-      remarkPlugins={[ReGfm, ReMath, ReBreak, ReImage, [ReToc, { heading: '目次' }]]}
+      remarkPlugins={[ReGfm, ReMath, ReBreak, ReImage, [ReToc, { heading: '目次' }], ]}
       rehypePlugins={[ReKatex]}
       className={classes.root}
       components={{
@@ -108,20 +109,8 @@ export const Markdown: React.VFC<{ markdown: string }> = ({ markdown }) => {
             </ListItem>
           );
         },
-        pre: ({children, className}) => {
-          return (
-            <pre className={clsx('line-numbers', 'show-language',className)}>
-              {children}
-            </pre>
-          )
-        },
-        code: ({children, className}) => {
-          return (
-            <code className={clsx({'language-unknown': !className}, className)} style={{padding: !className ? '5px' : ''}}>
-              {children}
-            </code>
-          )
-        }
+        pre: PrismPre,
+        code: PrismCode,
       }}
     >
       {markdown}
