@@ -6,7 +6,6 @@ pub fn identity_configure() -> IdentityService<CookieIdentityPolicy> {
     CookieIdentityPolicy::new(&[0; 32])
       .name("auths")
       .path("/")
-      .domain("localhost:8088")
       .same_site(SameSite::Strict)
       .max_age(3600)
       .secure(true),
