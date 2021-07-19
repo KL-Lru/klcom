@@ -10,6 +10,7 @@ pub fn cors_configure() -> Cors {
 
   Cors::default()
     .allowed_origin(&front_root)
+    .supports_credentials()
     .allowed_methods(vec!["GET", "POST", "PUT", "DELETE"])
     .allowed_headers(vec![header::AUTHORIZATION, header::ACCEPT])
     .allowed_header(header::CONTENT_TYPE)
