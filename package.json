@@ -55,7 +55,7 @@
     "glob": "^7.1.6",
     "history": "4.10.1",
     "html-loader": "^2.1.2",
-    "html-webpack-plugin": "^5.3.1",
+    "html-webpack-plugin": "^5.3.2",
     "immer": "^9.0.2",
     "ky": "^0.28.2",
     "moment": "^2.29.1",
