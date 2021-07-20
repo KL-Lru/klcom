@@ -1,6 +1,5 @@
 use crate::models::posts::{NewPost, Post, SearchPost};
 use crate::repositories::schema::posts;
-use chrono::Local;
 use diesel::prelude::*;
 use diesel::sql_types::{Nullable, Text};
 sql_function! {
