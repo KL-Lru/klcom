@@ -69,7 +69,7 @@
     "react-helmet": "^6.1.0",
     "react-hook-form": "^7.1.1",
     "react-markdown": "^6.0.2",
-    "react-query": "^3.13.9",
+    "react-query": "^3.19.2",
     "react-router": "5.2.0",
     "react-router-dom": "5.2.0",
     "rehype-katex": "^5.0.0",
