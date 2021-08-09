@@ -73,7 +73,7 @@
     "react-router": "5.2.0",
     "react-router-dom": "5.2.0",
     "rehype-katex": "^5.0.0",
-    "remark-breaks": "^2.0.2",
+    "remark-breaks": "^3.0.0",
     "remark-gfm": "^1.0.0",
     "remark-images": "^2.0.0",
     "remark-math": "^4.0.0",
